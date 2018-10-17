@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Build A Blog</h1>
+    <h1>Blogz</h1>
 
     <hr />
 
@@ -11,20 +11,13 @@
 
         <ul id='navigation'>
             {% for blog in blogs %}
-            <li><a href="{{ url_for('blog', id=blog.id) }}"><font size='6' color='blue'>{{blog.name}}</font></a><br /><br />{{blog.content}}<br /><br /></li>
+            <li><a href="{{ url_for('blog', id=blog.id) }}"><font size='5' color='blue'>{{blog.name}}</font></a><br /><br />{{blog.content}}<br />
+            <p class="user">written by <a href= "/blog?user={{ blog.owner.username }}" > {{blog.owner.username}} </a></p>
+            <hr />
+        </li>
             {% endfor %}
         </ul>
 
     {% endif %}
-
-    <hr />
-
-    <h2>Completed</h2>
-
-    <ul>
-        {% for blog in completed_blogs %}
-        <li>{{blog.name}}</li>
-        {% endfor %}
-    </ul>
 
 {% endblock %}

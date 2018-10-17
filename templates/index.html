@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if username|length == 0 %}
+<p>No new users</p>
+{% else %}
+<br />
+
+    <ul id='navigation'>
+        {% for username in username %}
+        <li><a href="{{ url_for('index', user=username.username, id=username.id) }}"><font size='4' color='blue'>{{username.username}}</font></a></li>
+        {% endfor %}
+    </ul>
+
+{% endif %}
+
+{% endblock %}

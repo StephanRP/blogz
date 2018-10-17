@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if blogs|length != 0 %}
+    <p>No new blogs</p>
+    {% else %}
+
+    <ul>
+            <h1>Welcome to {{user.username}}'s blog</h1>
+            {% for blog in user.blog %}
+            <li>
+                <h2> <a href= "/blog?id= {{ blog.id }}" > {{blog.name}} </a> </h2>
+                <p> {{blog.body}} </p>
+                <p class="post-author">written by <a href="{{ url_for('index', user=user.username, id=user.id) }}" > {{user.username}} </a></p>
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+{% endblock %}

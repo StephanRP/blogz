@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Blogz Login</h1>
+<p>If you don't have an account, you may <a href="/signup">Create Account</a></p>
+<form action="/login" method="post">
+    <table>
+        <tr>
+            <td><label for="username">Username</label></td>
+            <td>
+                <input name="username" type="username" value="{{ username }}">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td>
+                <input name="password" type="password">
+                {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Login">
+</form>
+{% endblock %}

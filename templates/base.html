@@ -5,23 +5,16 @@
         <style type="text/css">
             .error {
                 color: red;
+                display: inline-block;
             }
         </style>
         <br />
     </head>
 <body>
     <div style='float: left'>
-        <a href="blog">Main Blog Page</a> | <a href="newpost">Add Blog Entry</a>
+        <a href='/'>Home</a> | <a href="blog">All Blogz</a> | <a href="newpost">Add Blog Entry</a>
     </div>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul class=flashes>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-    {% endwith %}
+    <div style='float: right'><a href='/login'>Login</a> | <a href='/logout'>Log Out</a></div>
     {% block content %}
     {% endblock %}
 
